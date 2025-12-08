@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Новая задача
+  if error
+    p.error #{error}
+  form(method="post", action=('/new' + (status && status!=='all' ? '?status=' + status : '')))
+    input(type="hidden", name="status", value=status || 'all')
+    input(type="text", name="title", placeholder="Название задачи", required value=titleValue || '')
+    button.btn(type="submit") Создать
+  p
+    a.btn.btn-light(href=(status && status!=='all' ? '/?status=' + status : '/')) ← На главную

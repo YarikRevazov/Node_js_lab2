@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h2 Список задач
+  if todos.length
+    ul
+      each todo in todos
+        li(class=todo.completed ? 'completed' : '')
+          span #{todo.title} - #{todo.completed ? '✅' : '❌'}
+          form(action='/' + todo.id + '/toggle', method="POST", style="display:inline")
+            button(type="submit") Переключить
+          form(action='/' + todo.id + '/delete', method="POST", style="display:inline")
+            button(type="submit") Удалить
+  else
+    p Нет задач!

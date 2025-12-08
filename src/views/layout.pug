@@ -1,0 +1,19 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title #{title || appName}
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .wrapper
+      .topbar
+        div.brand #{appName}
+        nav.nav
+          a(href="/") Главная
+          a(href="/new") Новая
+          a(href="/about") О нас
+      .card
+        block content
+      .footer.muted
+        | © #{new Date().getFullYear()} · Учебный проект
